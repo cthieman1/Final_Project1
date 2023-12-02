@@ -2,7 +2,7 @@ from accounts import *
 
 def main():
     application = QApplication([])
-    window = Accounts('caleb')
+    window = Accounts()
     window.show()
     application.exec()
 
