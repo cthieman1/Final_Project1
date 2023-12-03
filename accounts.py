@@ -31,9 +31,9 @@ class Accounts(QMainWindow, Ui_MainWindow):
 
         self.stackedWidget.setCurrentIndex(2)
 
-    def load_data(self, name:str, balance:float) -> None:
+    def load_data(self, name: str, balance: float) -> None:
         """
-        takes the data given from the csv file for an account and uploads it to account balance and name
+        takes the data given from the csv file for an account and uploads it to account balance and name.
         :param name: name of the account
         :param balance: balance of the account
         :return: none
@@ -51,7 +51,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
         name = str(self.account_name_lnedit.text())
         if name == 'nil':
             self.account_warning_lbl.setText('Account cannot be nil')
-            return -1
+            return
         self.account_name_lnedit.clear()
 
         try:
@@ -60,7 +60,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
 
                 for line in csv_reader:
                     if line[0] == name:
-                        self.load_data(line[0], line[1])
+                        self.load_data(line[0], float(line[1]))
                         return  # Account found, no need to proceed further
 
             # If the account is not found, append it to the end of the file
@@ -199,7 +199,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
             amount = float(self.user_entry.text())
         except ValueError:
             self.warning_lbl.setText(f'Can not accept value')
-            return -1
+            return
 
         self.user_entry.clear()
 
