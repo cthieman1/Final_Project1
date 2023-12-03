@@ -62,7 +62,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="reg_account_page">
      <widget class="QPushButton" name="set_balance_button">
@@ -155,7 +155,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="savings_account_page">
-     <widget class="QLabel" name="saving_account_lbl">
+     <widget class="QLabel" name="savings_account_lbl">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -166,6 +166,55 @@
       </property>
       <property name="text">
        <string>Savings Account Page</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="savings_warning_lbl">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>80</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>warning label</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="savings_deposit_btn">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>120</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deposit</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="savings_lnedit">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="savings_balance_lbl">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>251</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Balance</string>
       </property>
      </widget>
     </widget>
