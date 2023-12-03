@@ -9,7 +9,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.__account_name = 'john'
+        self.__account_name = 'nil'
         self.__account_balance = 0
         self.__MINIMUM = 100
         self.__RATE = 1.02
@@ -26,6 +26,8 @@ class Accounts(QMainWindow, Ui_MainWindow):
         self.change_account_btn.clicked.connect(lambda: self.switch_page(2))
 
         self.warning_lbl.setText('')
+        self.account_warning_lbl.setText('')
+        self.savings_warning_lbl.setText('')
 
         self.stackedWidget.setCurrentIndex(2)
 
@@ -47,6 +49,9 @@ class Accounts(QMainWindow, Ui_MainWindow):
         :return: none
         """
         name = str(self.account_name_lnedit.text())
+        if name == 'nil':
+            self.account_warning_lbl.setText('Account cannot be nil')
+            return -1
         self.account_name_lnedit.clear()
 
         try:
@@ -91,6 +96,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
         self.savings_balance_lbl.setText(f'Balance: ${self.get_balance(2):.2f}')
         self.savings_warning_lbl.setText('')
         self.warning_lbl.setText('')
+        self.account_warning_lbl.setText('')
 
     def save_account(self) -> None:
         """

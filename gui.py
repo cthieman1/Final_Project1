@@ -77,11 +77,14 @@ class Ui_MainWindow(object):
         self.enter_account_name_lbl.setGeometry(QtCore.QRect(20, 60, 131, 16))
         self.enter_account_name_lbl.setObjectName("enter_account_name_lbl")
         self.account_name_lnedit = QtWidgets.QLineEdit(parent=self.account_page)
-        self.account_name_lnedit.setGeometry(QtCore.QRect(20, 80, 241, 20))
+        self.account_name_lnedit.setGeometry(QtCore.QRect(20, 80, 191, 20))
         self.account_name_lnedit.setObjectName("account_name_lnedit")
         self.set_name_btn = QtWidgets.QPushButton(parent=self.account_page)
         self.set_name_btn.setGeometry(QtCore.QRect(20, 110, 75, 23))
         self.set_name_btn.setObjectName("set_name_btn")
+        self.account_warning_lbl = QtWidgets.QLabel(parent=self.account_page)
+        self.account_warning_lbl.setGeometry(QtCore.QRect(216, 80, 171, 21))
+        self.account_warning_lbl.setObjectName("account_warning_lbl")
         self.stackedWidget.addWidget(self.account_page)
         self.account_name_lbl = QtWidgets.QLabel(parent=self.centralwidget)
         self.account_name_lbl.setGeometry(QtCore.QRect(250, 10, 131, 20))
@@ -99,7 +102,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -120,6 +123,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Account Page"))
         self.enter_account_name_lbl.setText(_translate("MainWindow", "Enter Account Name"))
         self.set_name_btn.setText(_translate("MainWindow", "Set Name"))
+        self.account_warning_lbl.setText(_translate("MainWindow", "Warning Label"))
         self.account_name_lbl.setText(_translate("MainWindow", "account name"))
         self.change_account_btn.setText(_translate("MainWindow", "Change Account"))
 
