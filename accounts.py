@@ -53,6 +53,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
             self.account_warning_lbl.setText('Account cannot be nil')
             return
         self.account_name_lnedit.clear()
+        self.__account_name = name
 
         try:
             with open('accounts.csv', 'r') as csv_file:
@@ -64,10 +65,13 @@ class Accounts(QMainWindow, Ui_MainWindow):
                         return  # Account found, no need to proceed further
 
             # If the account is not found, append it to the end of the file
-            with open('accounts.csv', 'a', newline='') as csv_file:
-                csv_writer = csv.writer(csv_file)
-                new_data = [name, 0, 100, 0]
-                csv_writer.writerow(new_data)
+                with open('accounts.csv', 'a', newline='') as csv_file:
+                    csv_writer = csv.writer(csv_file)
+                    new_data = [name, 0, 100, 0]
+                    csv_writer.writerow(new_data)
+                for line in csv_reader:
+                    if line[0] == name:
+                         self.load_data(line[0], float(line[1]))
 
         except FileNotFoundError:
             # If the file doesn't exist, create it and add the new account
@@ -75,6 +79,12 @@ class Accounts(QMainWindow, Ui_MainWindow):
                 csv_writer = csv.writer(csv_file)
                 new_data = [name, 0, 100, 0]
                 csv_writer.writerow(new_data)
+
+            with open('accounts.csv', 'r') as csv_file:
+                csv_reader = csv.reader(csv_file)
+                for line in csv_reader:
+                    if line[0] == name:
+                        self.load_data(line[0], float(line[1]))
 
         self.display_balance()
 
@@ -84,8 +94,12 @@ class Accounts(QMainWindow, Ui_MainWindow):
         :param index: the index of the page to switch to
         :return: none
         """
-        self.stackedWidget.setCurrentIndex(index)
-        self.display_balance()
+        if self.__account_name == 'nil':
+            self.account_warning_lbl.setText('Enter account before switching tabs')
+            return
+        else:
+            self.stackedWidget.setCurrentIndex(index)
+            self.display_balance()
 
     def display_balance(self) -> None:
         """
@@ -169,7 +183,6 @@ class Accounts(QMainWindow, Ui_MainWindow):
                         value = line[1]
                     elif token == 2:
                         value = line[2]
-
         return float(value)
 
     def deposit(self) -> None:
@@ -240,7 +253,7 @@ class Accounts(QMainWindow, Ui_MainWindow):
             self.savings_warning_lbl.setText(f'Can not accept value')
             return
 
-        self.user_entry.clear()
+        self.savings_lnedit.clear()
         if amount > 0:
             self.change_savings(float(self.get_balance(2)) + amount)
 
