@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         self.account_warning_lbl.setObjectName("account_warning_lbl")
         self.stackedWidget.addWidget(self.account_page)
         self.account_name_lbl = QtWidgets.QLabel(parent=self.centralwidget)
-        self.account_name_lbl.setGeometry(QtCore.QRect(250, 10, 131, 20))
+        self.account_name_lbl.setGeometry(QtCore.QRect(250, 10, 141, 20))
         self.account_name_lbl.setObjectName("account_name_lbl")
         self.change_account_btn = QtWidgets.QPushButton(parent=self.centralwidget)
         self.change_account_btn.setGeometry(QtCore.QRect(250, 30, 101, 23))
